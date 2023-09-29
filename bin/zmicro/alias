@@ -1,0 +1,45 @@
+#!/bin/bash
+
+export DESKTOP_NAME="orbstack"
+import "$ZMICRO_DESKTOPS_PATH/$DESKTOP_NAME/config"
+import "$ZMICRO_DESKTOPS_PATH/$DESKTOP_NAME/core"
+
+help() {
+  echo "Usage:"
+  echo "  zmicro orbstack <args ...>"
+  echo ""
+
+  orbstack --help
+}
+
+version() {
+  orbstack --version
+}
+
+core() {
+  # context directory
+  local context="$ZMICRO_DESKTOPS_DATA_PATH/orbstack"
+  if [ ! -d "$context" ]; then
+    mkdir -p $context
+  fi
+  cd $context
+  # context directory
+
+  case $1 in
+  -h | --help | help)
+    help
+    ;;
+  -v | --version | version)
+    version
+    ;;
+  *)
+    orbstack "$@"
+    ;;
+  esac
+}
+
+run() {
+  core "$@"
+}
+
+run "$@"
