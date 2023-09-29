@@ -53,7 +53,7 @@ install() {
     #   https://cdn-updates.orbstack.dev/arm64/OrbStack_v1.0.0_16230_arm64.dmg
     #   https://cdn-updates.orbstack.dev/amd64/OrbStack_v1.0.0_16230_amd64.dmg
     # generate url
-    local url="${DESKTOP_CORE_RELEASE_DOWNLOAD}/${arch}/OrbStack_${DESKTOP_CORE_VERSION}_${arch}.dmg"
+    local url="${DESKTOP_CORE_RELEASE_DOWNLOAD}/${arch}/OrbStack_${DESKTOP_CORE_VERSION}_${DESKTOP_CORE_VERSION_NUMBER}_${arch}.dmg"
     log::debug "[$(timestamp)][desktop][$name][$kernel][$arch] url: $url, file: ${cache_file}, tmp_dir: $tmp_dir"
 
     # download
@@ -63,7 +63,7 @@ install() {
 
   # install
   log::info "[$(timestamp)][desktop][$name] installing $cache_file ..."
-  install::dmg $cache_file ${name} ${name}.app "/Volumes/electerm 1.25.16-arm64"
+  install::dmg $cache_file ${name} OrbStack.app "/Volumes/Install OrbStack ${DESKTOP_CORE_VERSION}"
 
   # clean
   log::info "[$(timestamp)][desktop][$name] cleaning ..."
